@@ -1,0 +1,49 @@
+#[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
+pub struct Price {
+    price_value: u64,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct Quantity {
+    quantity_value: u64,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct OrderId {
+    order_id: u64,
+}
+
+impl Price {
+    //new price
+    pub fn new(value: u64) -> Price {
+        Price { price_value: value }
+    }
+
+    pub fn get_price(&self) -> u64 {
+        return self.price_value;
+    }
+}
+
+impl Quantity {
+    //new quantity
+    pub fn new(value: u64) -> Quantity {
+        Quantity {
+            quantity_value: value,
+        }
+    }
+
+    pub fn get_quantity(&self) -> u64 {
+        return self.quantity_value;
+    }
+}
+
+impl OrderId {
+    //new order id
+    pub fn new(value: u64) -> OrderId {
+        OrderId { order_id: value }
+    }
+
+    pub fn get_order_id(&self) -> u64 {
+        return self.order_id;
+    }
+}
