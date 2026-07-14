@@ -13,7 +13,51 @@ pub struct OrderId {
     order_id: u64,
 }
 
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub enum Side {
+    Buy,
+    Sell,
+}
+
+#[derive(Debug, Clone, PartialEq)]
+pub struct Order {
+    id: OrderId,
+    price: Price,
+    quantity: Quantity,
+    side: Side,
+}
+
+impl Order {
+    pub fn get_id(&self) -> OrderId {
+        return self.id;
+    }
+
+    pub fn get_price(&self) -> Price {
+        return self.price;
+    }
+
+    pub fn get_quantity(&self) -> Quantity {
+        return self.quantity;
+    }
+
+    pub fn get_side(&self) -> Side {
+        return self.side;
+    }
+
+    pub fn new(id: OrderId, price: Price, quantity: Quantity, side: Side) -> Order {
+        Order {
+            id,
+            price,
+            quantity,
+            side,
+        }
+    }
+}
+
 impl Price {
+    //writing these functions inside this block
+    // means that they are attached to the struct
+
     //new price
     pub fn new(value: u64) -> Price {
         Price { price_value: value }
