@@ -19,6 +19,14 @@ pub enum Side {
     Sell,
 }
 
+#[derive(Debug, PartialEq)]
+pub struct Trade {
+    price: Price,
+    quantity: Quantity,
+    incoming_order_id: OrderId,
+    resting_order_id: OrderId,
+}
+
 #[derive(Debug, Clone, Eq, Ord, PartialEq, PartialOrd)]
 pub struct Order {
     id: OrderId,
@@ -42,6 +50,10 @@ impl Order {
 
     pub fn get_side(&self) -> Side {
         return self.side;
+    }
+
+    pub fn set_quantity(&mut self, new_quantity: Quantity) {
+        self.quantity = new_quantity;
     }
 
     pub fn new(id: OrderId, price: Price, quantity: Quantity, side: Side) -> Order {
@@ -89,5 +101,21 @@ impl OrderId {
 
     pub fn get_order_id(&self) -> u64 {
         return self.order_id;
+    }
+}
+
+impl Trade {
+    pub fn new(
+        price: Price,
+        quantity: Quantity,
+        incoming_order_id: OrderId,
+        resting_order_id: OrderId,
+    ) -> Trade {
+        Trade {
+            price,
+            quantity,
+            incoming_order_id,
+            resting_order_id,
+        }
     }
 }
