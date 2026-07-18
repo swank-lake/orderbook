@@ -120,6 +120,7 @@ impl PriceLevel {
                     );
 
                     trades.push(trade);
+                    removed_order_ids.push(resting_id);
                 }
             }
         }
@@ -166,7 +167,7 @@ impl OrderBook {
             }
             Side::Sell => {
                 let best_bid_price = self.get_best_bid()?;
-                self.ask.get_mut(&best_bid_price)
+                self.bid.get_mut(&best_bid_price)
             }
         }
     }
